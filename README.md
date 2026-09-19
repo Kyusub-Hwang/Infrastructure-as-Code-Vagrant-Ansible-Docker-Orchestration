@@ -6,7 +6,7 @@ Infrastructure-as-Code(IaS) tutorial using:
 - Docker Swarm()Orchestration)
 
 
-Vagrant Cheat Sheet (Source: [gist.githubusercontent.com/wpscholar/a49594e2e2b918f4d0c4/raw/fc0fc1942ad239598bc4c41306db114cd2d1b758/vagrant-cheat-sheet.md](https://gist.githubusercontent.com/wpscholar/a49594e2e2b918f4d0c4/raw/fc0fc1942ad239598bc4c41306db114cd2d1b758/vagrant-cheat-sheet.md))
+1. Vagrant Cheat Sheet (Source: [gist.githubusercontent.com/wpscholar/a49594e2e2b918f4d0c4/raw/fc0fc1942ad239598bc4c41306db114cd2d1b758/vagrant-cheat-sheet.md](https://gist.githubusercontent.com/wpscholar/a49594e2e2b918f4d0c4/raw/fc0fc1942ad239598bc4c41306db114cd2d1b758/vagrant-cheat-sheet.md))
 
 # Creating a VM
 
@@ -101,3 +101,25 @@ Vagrant Cheat Sheet (Source: [gist.githubusercontent.com/wpscholar/a49594e2e2b91
 # Notes
 
 - If you are using [VVV](https://github.com/varying-vagrant-vagrants/vvv/), you can enable xdebug by running `vagrant ssh` and then `xdebug_on` from the virtual machine's CLI.
+
+![1789855700388](image/README/1789855700388.png)
+
+2. Ansible
+
+# Setup SSH between control and nodes (to prevent N times password prompting when running Ansible Playbook)
+
+- ssh-keygen
+- sudo apt-get update && sudo apt-get install -y sshpass
+- for node in node1 node2 node3; do
+  sshpass -p 'vagrant' ssh-copy-id -i ~/.ssh/id_ed25519.pub -o StrictHostKeyChecking=no vagrant@$node
+  done
+
+# Download Ansible in Control
+
+- sudo apt install ansible
+
+# Push out software using Ansible Playbook (install Docker, Docker-Compose, Create Docker Group).
+
+- ansible-playbook -i myhosts -K playbook1.yml
+
+![1789855769793](image/README/1789855769793.png)
