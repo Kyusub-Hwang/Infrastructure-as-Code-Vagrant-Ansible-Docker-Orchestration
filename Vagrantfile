@@ -36,6 +36,16 @@ Vagrant.configure("2") do |config|
                 vb.customize ["modifyvm", :id, "--memory", 512]
                 vb.customize ["modifyvm", :id, "--cpus", 1]
             end
+
+            # Build the image on worker nodes where Docker is installed
+            if machine[:hostname] != "control"
+              node.vm.provision "shell", privileged: false, inline: <<-SHELL
+                if [ -d /vagrant/docker ]; then
+                  cd /vagrant/docker
+                  docker build -t myflaskimg:local .
+                fi
+              SHELL
+            end
         end
     end
 end

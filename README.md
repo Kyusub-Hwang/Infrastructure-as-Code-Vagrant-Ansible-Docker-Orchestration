@@ -1,9 +1,23 @@
 Infrastructure-as-Code(IaS) tutorial using:
 
-- Vagrant
-- Ansible
-- Docker
-- Docker Swarm()Orchestration)
+- Vagrant: Setup Local VMs (1 Contol + N Worker Nodes)
+
+![1789855700388](image/README/1789855700388.png)
+
+- Ansible: Configuration Management (install docker)
+
+![1789855769793](image/README/1789855769793.png)
+
+- Docker: Run Containerized app
+
+![1789987283468](image/README/1789987283468.png)
+
+- Docker Swarm: Orchestrate containers on nodes
+
+![1789987170510](image/README/1789987170510.png)
+
+
+# Notes 
 
 
 1. Vagrant Cheat Sheet (Source: [gist.githubusercontent.com/wpscholar/a49594e2e2b918f4d0c4/raw/fc0fc1942ad239598bc4c41306db114cd2d1b758/vagrant-cheat-sheet.md](https://gist.githubusercontent.com/wpscholar/a49594e2e2b918f4d0c4/raw/fc0fc1942ad239598bc4c41306db114cd2d1b758/vagrant-cheat-sheet.md))
@@ -102,8 +116,6 @@ Infrastructure-as-Code(IaS) tutorial using:
 
 - If you are using [VVV](https://github.com/varying-vagrant-vagrants/vvv/), you can enable xdebug by running `vagrant ssh` and then `xdebug_on` from the virtual machine's CLI.
 
-![1789855700388](image/README/1789855700388.png)
-
 2. Ansible
 
 # Setup SSH between control and nodes (to prevent N times password prompting when running Ansible Playbook)
@@ -121,5 +133,3 @@ Infrastructure-as-Code(IaS) tutorial using:
 # Push out software using Ansible Playbook (install Docker, Docker-Compose, Create Docker Group).
 
 - ansible-playbook -i myhosts -K playbook1.yml
-
-![1789855769793](image/README/1789855769793.png)
